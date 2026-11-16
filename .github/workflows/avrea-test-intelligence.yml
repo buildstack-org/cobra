@@ -15,4 +15,5 @@ jobs:
         with:
           go-version: stable
       - name: Run go test through gotestsum
-        run: go run gotest.tools/gotestsum@v1.13.0 --junitfile junit-go.xml -- ./...
+        run: go run gotest.tools/gotestsum@v1.13.0 --junitfile go-results.xml -- ./...
+
