@@ -1,0 +1,18 @@
+name: Avrea Test Intelligence
+
+# Runs this project's own tests on Avrea runners and writes the JUnit report
+# Avrea reads. Manual only; not part of the upstream project.
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: buildstack-dev-varjo
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - name: Run go test through gotestsum
+        run: go run gotest.tools/gotestsum@v1.13.0 --junitfile junit-go.xml -- ./...
